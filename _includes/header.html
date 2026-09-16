@@ -1,35 +1,35 @@
 <header class="site-header">
+  <!-- Built-in Dark Mode Script: Mutes colors instantly if system is dark -->
+  <style>
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #1a1a1a !important; color: #e0e0e0 !important; }
+      .site-title, .site-header, .site-footer { border-color: #333 !important; }
+      .site-title, .page-link { color: #ffffff !important; }
+      p, li, .post-meta { color: #b0b0b0 !important; }
+      a { color: #64b5f6 !important; }
+    }
+  </style>
 
   <div class="wrapper" style="position: relative; padding-top: 24px; padding-bottom: 24px;">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
     
-    <!-- Header Text Block (Takes up full width, no float blocks) -->
     <div style="width: 100%; margin-bottom: 12px;">
-      <!-- Main Title (Subtle, completely un-bolded, matte charcoal gray) -->
-      <a class="site-title" rel="author" href="{{ '/' | relative_url }}" style="font-weight: 300; font-size: 16px; color: #424242; letter-spacing: 0.5px; display: inline-block; text-decoration: none; margin-bottom: 6px; float: none;">
+      <!-- Title -->
+      <a class="site-title" rel="author" href="{{ '/' | relative_url }}" style="font-weight: 300; font-size: 16px; letter-spacing: 0.5px; display: inline-block; text-decoration: none; margin-bottom: 6px;">
         {{ site.author.name | escape }}'s Blog
       </a>
-      <!-- Subtitle Description (Pushed to a new line, spans full width, lighter muted gray) -->
+      <!-- Subtitle (Spans across page on a new line) -->
       {%- if site.description -%}
-        <div style="font-size: 12px; color: #828282; font-weight: 300; font-style: italic; line-height: 1.4; letter-spacing: 0.2px; width: 100%; display: block; clear: both;">
+        <div style="font-size: 12px; font-weight: 300; font-style: italic; line-height: 1.4; letter-spacing: 0.2px; width: 100%; display: block; opacity: 0.7;">
           {{ site.description | escape }}
         </div>
       {%- endif -%}
     </div>
 
-    <!-- Navigation Menu (Positioned neatly to the right without disrupting the full-width text layout) -->
+    <!-- Navigation Links -->
     {%- if page_paths -%}
-      <nav class="site-nav" style="position: absolute; right: 0; top: 20px; line-height: 1;">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-        <label for="nav-trigger">
-          <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.033,18,12.695,18,13.516L18,13.516z"/>
-            </svg>
-          </span>
-        </label>
-
+      <nav class="site-nav" style="position: absolute; right: 0; top: 20px;">
         <div class="trigger">
           {%- for path in page_paths -%}
             {%- assign my_page = site.pages | where: "path", path | first -%}
@@ -40,8 +40,6 @@
         </div>
       </nav>
     {%- endif -%}
-    
-    <!-- Clean break to ensure the content below the header stays separated -->
     <div style="clear: both;"></div>
   </div>
 </header>
