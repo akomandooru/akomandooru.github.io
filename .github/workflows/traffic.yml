@@ -2,10 +2,9 @@ name: Nightly Traffic Analytics Backup
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Runs automatically every night at midnight UTC
+    - cron: '17 3 * * *' # Runs at 3:17 AM UTC, completely skipping peak congestion windows
   workflow_dispatch: # Allows you to run it manually to test it
 
-# Explicitly force GitHub to grant write access to this workflow runner
 permissions:
   contents: write
   pages: write
@@ -24,6 +23,13 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.TRAFFIC_TOKEN }}
-          base: repositories
+          filename: github-metrics.svg
+          
+          # TARGET SPECIFIC REPOSITORY AND POST PATHS
+          user: akomandooru
+          repo: akomandooru.github.io
+          template: repository
+          base: "" # Disables general account activity blocks to save space
+          
+          # ENABLE GRANULAR TRAFFIC ANALYSIS
           plugin_traffic: yes
-          output_action: commit
