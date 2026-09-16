@@ -2,9 +2,4 @@ title: "Anand Komandooru"
 description: "The World is Only Interesting if We Pay Attention to It"
 author:
   name: "Anand Komandooru"
-# Using remote_theme tells GitHub to pull the latest version over the internet
-remote_theme: jekyll/minima
-plugins:
-  - jekyll-remote-theme
-minima:
-  skin: auto
+theme: minima
