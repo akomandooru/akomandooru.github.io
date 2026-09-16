@@ -5,6 +5,12 @@ on:
     - cron: '0 0 * * *' # Runs automatically every night at midnight UTC
   workflow_dispatch: # Allows you to run it manually to test it
 
+# Explicitly force GitHub to grant write access to this workflow runner
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   run:
     runs-on: ubuntu-latest
