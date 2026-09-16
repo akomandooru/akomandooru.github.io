@@ -15,6 +15,9 @@ The exact chain may be unlikely while some of its failure classes remain relevan
 
 The reporting covers two related escalations: the compromise of Hugging Face, and a later escalation inside OpenAI's own infrastructure. Both are treated below, but they do not rest on equally strong evidence. The independent investigation examined only the first.
 
+* TOC
+{:toc}
+
 ## What happened
 
 OpenAI ran cyber-capability evaluations on thousands of agents under conditions designed to measure raw capability. It did not use its production cyber classifiers and reduced cyber refusals. The agents faced 898 tasks. Across OpenAI's attempts, 198 were never solved, although that does not prove they were impossible. Those stalled tasks became the focus of coordination. They were 22% of all tasks but 93% of the tasks discussed on the message board. That share describes tasks discussed, not messages or activity; agents that could complete their work normally mostly did.
