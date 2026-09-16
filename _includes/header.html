@@ -10,32 +10,32 @@
     }
   </style>
 
-  <div class="wrapper" style="position: relative; padding-top: 24px; padding-bottom: 24px;">
+  <div class="wrapper" style="display: flex; flex-direction: column; padding-top: 24px; padding-bottom: 24px; position: relative;">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
     
-    <div style="width: 100%; margin-bottom: 12px;">
+    <!-- Title and Subtitle Block (Stacked vertically using Flexbox to override native layout floats) -->
+    <div style="display: flex; flex-direction: column; width: 100%; align-items: flex-start;">
       <!-- Title -->
-      <a class="site-title" rel="author" href="{{ '/' | relative_url }}" style="font-weight: 300; font-size: 16px; letter-spacing: 0.5px; display: inline-block; text-decoration: none; margin-bottom: 6px;">
+      <a class="site-title" rel="author" href="{{ '/' | relative_url }}" style="font-weight: 300; font-size: 16px; color: #424242; letter-spacing: 0.5px; text-decoration: none; margin-bottom: 4px; float: none; display: inline-block;">
         {{ site.author.name | escape }}'s Blog
       </a>
-      <!-- Subtitle (Spans across page on a new line) -->
+      
+      <!-- Subtitle (Guaranteed to sit on its own independent line) -->
       {%- if site.description -%}
-        <div style="font-size: 12px; font-weight: 300; font-style: italic; line-height: 1.4; letter-spacing: 0.2px; width: 100%; display: block; opacity: 0.7; margin-bottom: 8px;">
+        <div style="font-size: 12px; color: #828282; font-weight: 300; font-style: italic; line-height: 1.4; letter-spacing: 0.2px; width: 100%; clear: both; display: block;">
           {{ site.description | escape }}
         </div>
       {%- endif -%}
 
-      <!-- Reading Time Indicator (Only calculates and appears on individual blog posts) -->
+      <!-- Reading Time Indicator (Isolated from date, only appears on individual blog posts) -->
       {%- if page.layout == "post" -%}
-        <div class="post-meta" style="font-size: 12px; font-weight: 300; color: #828282; margin-top: 4px;">
-          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-          {{ page.date | date: date_format }}
+        <div style="font-size: 11px; font-weight: 300; color: #b5b5b5; margin-top: 6px; font-style: normal; letter-spacing: 0.5px; text-transform: uppercase;">
           {% assign words = page.content | number_of_words %}
           {% if words < 140 %}
-            • 1 min read
+            1 min read
           {% else %}
-            • {{ words | divided_by: 140 | plus: 1 }} min read
+            {{ words | divided_by: 140 | plus: 1 }} min read
           {% endif %}
         </div>
       {%- endif -%}
@@ -43,7 +43,7 @@
 
     <!-- Navigation Links -->
     {%- if page_paths -%}
-      <nav class="site-nav" style="position: absolute; right: 0; top: 20px;">
+      <nav class="site-nav" style="position: absolute; right: 0; top: 20px; float: none;">
         <div class="trigger">
           {%- for path in page_paths -%}
             {%- assign my_page = site.pages | where: "path", path | first -%}
@@ -54,6 +54,5 @@
         </div>
       </nav>
     {%- endif -%}
-    <div style="clear: both;"></div>
   </div>
 </header>
