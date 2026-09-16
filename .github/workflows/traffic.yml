@@ -15,8 +15,9 @@ jobs:
           token: ${{ secrets.TRAFFIC_TOKEN }}
 
       - name: Fetch and Archive Traffic Data
-        uses: sangonzal/repository-traffic-action@v0.1.1
+        uses: lowlighter/metrics@latest
         with:
-          TOKEN: ${{ secrets.TRAFFIC_TOKEN }}
-          REPOSITORY: ${{ github.repository }}
-          BRANCH: "main" # Change to "master" if your default branch uses master
+          token: ${{ secrets.TRAFFIC_TOKEN }}
+          base: repositories
+          plugin_traffic: yes
+          output_action: commit
