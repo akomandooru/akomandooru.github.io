@@ -1,0 +1,22 @@
+name: Nightly Traffic Analytics Backup
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs automatically every night at midnight UTC
+  workflow_dispatch: # Allows you to run it manually to test it
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.TRAFFIC_TOKEN }}
+
+      - name: Fetch and Archive Traffic Data
+        uses: sangonzal/repository-traffic-action@v0.1.1
+        with:
+          TOKEN: ${{ secrets.TRAFFIC_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+          BRANCH: "main" # Change to "master" if your default branch uses master
