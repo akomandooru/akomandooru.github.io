@@ -1,23 +1,26 @@
 <header class="site-header">
 
-  <div class="wrapper">
+  <div class="wrapper" style="position: relative; padding-top: 24px; padding-bottom: 24px;">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
-    <div style="float: left; padding-top: 22px; padding-bottom: 22px;">
+    
+    <!-- Header Text Block (Takes up full width, no float blocks) -->
+    <div style="width: 100%; margin-bottom: 12px;">
       <!-- Main Title (Subtle, completely un-bolded, matte charcoal gray) -->
-      <a class="site-title" rel="author" href="{{ '/' | relative_url }}" style="font-weight: 300; font-size: 16px; color: #424242; letter-spacing: 0.5px; margin-bottom: 3px; display: block; text-decoration: none;">
+      <a class="site-title" rel="author" href="{{ '/' | relative_url }}" style="font-weight: 300; font-size: 16px; color: #424242; letter-spacing: 0.5px; display: inline-block; text-decoration: none; margin-bottom: 6px; float: none;">
         {{ site.author.name | escape }}'s Blog
       </a>
-      <!-- Subtitle Description (Smaller, lighter muted gray) -->
+      <!-- Subtitle Description (Pushed to a new line, spans full width, lighter muted gray) -->
       {%- if site.description -%}
-        <div style="font-size: 12px; color: #828282; font-weight: 300; font-style: italic; line-height: 1.2; letter-spacing: 0.2px;">
+        <div style="font-size: 12px; color: #828282; font-weight: 300; font-style: italic; line-height: 1.4; letter-spacing: 0.2px; width: 100%; display: block; clear: both;">
           {{ site.description | escape }}
         </div>
       {%- endif -%}
     </div>
 
+    <!-- Navigation Menu (Positioned neatly to the right without disrupting the full-width text layout) -->
     {%- if page_paths -%}
-      <nav class="site-nav">
+      <nav class="site-nav" style="position: absolute; right: 0; top: 20px; line-height: 1;">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -27,15 +30,18 @@
           </span>
         </label>
 
-        <div class="trigger" style="padding-top: 15px;">
+        <div class="trigger">
           {%- for path in page_paths -%}
             {%- assign my_page = site.pages | where: "path", path | first -%}
             {%- if my_page.title -%}
-            <a class="page-link" href="{{ my_page.url | relative_url }}" style="font-weight: 300; font-size: 14px;">{{ my_page.title | escape }}</a>
+            <a class="page-link" href="{{ my_page.url | relative_url }}" style="font-weight: 300; font-size: 14px; margin-left: 20px;">{{ my_page.title | escape }}</a>
             {%- endif -%}
           {%- endfor -%}
         </div>
       </nav>
     {%- endif -%}
+    
+    <!-- Clean break to ensure the content below the header stays separated -->
+    <div style="clear: both;"></div>
   </div>
 </header>
