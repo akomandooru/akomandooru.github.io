@@ -21,8 +21,22 @@
       </a>
       <!-- Subtitle (Spans across page on a new line) -->
       {%- if site.description -%}
-        <div style="font-size: 12px; font-weight: 300; font-style: italic; line-height: 1.4; letter-spacing: 0.2px; width: 100%; display: block; opacity: 0.7;">
+        <div style="font-size: 12px; font-weight: 300; font-style: italic; line-height: 1.4; letter-spacing: 0.2px; width: 100%; display: block; opacity: 0.7; margin-bottom: 8px;">
           {{ site.description | escape }}
+        </div>
+      {%- endif -%}
+
+      <!-- Reading Time Indicator (Only calculates and appears on individual blog posts) -->
+      {%- if page.layout == "post" -%}
+        <div class="post-meta" style="font-size: 12px; font-weight: 300; color: #828282; margin-top: 4px;">
+          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+          {{ page.date | date: date_format }}
+          {% assign words = page.content | number_of_words %}
+          {% if words < 140 %}
+            • 1 min read
+          {% else %}
+            • {{ words | divided_by: 140 | plus: 1 }} min read
+          {% endif %}
         </div>
       {%- endif -%}
     </div>
