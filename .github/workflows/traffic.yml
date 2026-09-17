@@ -26,7 +26,6 @@ jobs:
           filename: github-metrics.svg
           
           user: akomandooru
-          repo: akomandooru.github.io
           template: classic
           base: "" 
           
