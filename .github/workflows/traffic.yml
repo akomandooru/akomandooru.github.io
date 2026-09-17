@@ -27,6 +27,7 @@ jobs:
           
           user: akomandooru
           repo: akomandooru.github.io
+          template: classic
           base: "" 
           
           # ✒️ JEKYLL RSS BLOG CONFIGURATION
