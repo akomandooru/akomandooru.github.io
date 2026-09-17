@@ -31,8 +31,6 @@ jobs:
           base: "" 
           
           # ✒️ JEKYLL RSS BLOG CONFIGURATION
-          plugin_posts: yes
-          plugin_posts_source: rss
-          plugin_posts_user: "https://github.io"
-          plugin_posts_limit: 4
-          plugin_posts_descriptions: yes
+          plugin_rss: yes          
+          plugin_rss_source: https://github.io
+          plugin_rss_limit: 4          
