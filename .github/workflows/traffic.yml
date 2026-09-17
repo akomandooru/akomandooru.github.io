@@ -33,8 +33,12 @@ jobs:
           user: akomandooru
           template: classic
           base: ""
+
+          # 📏 CANVAS LAYOUT & EXPANSION
+          config_order: rss
+          config_padding: 0, 24 + 15%
           
-          # ✒️ BYPASS GITHUB.IO PARSER STRIPPING
+          # ✒️ RSS
           plugin_rss: yes
           plugin_rss_source: https://akomandooru.github.io/feed.xml
           plugin_rss_limit: 4
