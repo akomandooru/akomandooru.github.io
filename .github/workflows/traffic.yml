@@ -34,5 +34,6 @@ jobs:
           
           # ✒️ CORRECT TARGETING FOR JEKYLL XML STRUCTURE
           plugin_rss: yes
-          plugin_rss_source: "https://github.io"
+          plugin_rss_source: |
+            https://github.io
           plugin_rss_limit: 4
