@@ -35,6 +35,6 @@ jobs:
           base: ""
           
           # ✒️ BYPASS GITHUB.IO PARSER STRIPPING
-          plugin_posts_source: rss
-          plugin_posts_user: https://akomandooru.github.io/feed.xml
-          plugin_posts_limit: 4
+          plugin_rss: yes
+          plugin_rss_source: https://akomandooru.github.io/feed.xml
+          plugin_rss_limit: 4
