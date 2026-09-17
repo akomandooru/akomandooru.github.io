@@ -3,7 +3,7 @@ name: Nightly Traffic Analytics Backup
 on:
   schedule:
     - cron: '17 3 * * *' # Runs at 3:17 AM UTC
-  workflow_dispatch: # Allows you to run it manually to test it
+  workflow_dispatch: # Allows manual testing
 
 permissions:
   contents: write
@@ -18,19 +18,21 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.TRAFFIC_TOKEN }}
-          committer_token: ${{ secrets.TRAFFIC_TOKEN }}
 
       - name: Fetch and Render Blog Posts
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.TRAFFIC_TOKEN }}
-          filename: github-metrics.svg
           
+          # 💾 Commits the generated SVG image directly back to your branch
+          committer_token: ${{ secrets.TRAFFIC_TOKEN }}
+          
+          filename: github-metrics.svg
           user: akomandooru
           template: classic
           base: "" 
           
-          # ✒️ JEKYLL RSS BLOG CONFIGURATION
-          plugin_rss: yes          
-          plugin_rss_source: https://github.io
-          plugin_rss_limit: 4          
+          # ✒️ CORRECT TARGETING FOR JEKYLL XML STRUCTURE
+          plugin_rss: yes
+          plugin_rss_source: "https://github.io"
+          plugin_rss_limit: 4
