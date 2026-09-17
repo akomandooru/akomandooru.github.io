@@ -2,7 +2,7 @@ name: Nightly Traffic Analytics Backup
 
 on:
   schedule:
-    - cron: '17 3 * * *' # Runs at 3:17 AM UTC, completely skipping peak congestion windows
+    - cron: '17 3 * * *' # Runs at 3:17 AM UTC
   workflow_dispatch: # Allows you to run it manually to test it
 
 permissions:
@@ -19,17 +19,18 @@ jobs:
         with:
           token: ${{ secrets.TRAFFIC_TOKEN }}
 
-      - name: Fetch and Archive Traffic Data
+      - name: Fetch and Render Blog Posts
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.TRAFFIC_TOKEN }}
           filename: github-metrics.svg
           
-          # TARGET SPECIFIC REPOSITORY AND POST PATHS
           user: akomandooru
           repo: akomandooru.github.io
-          template: repository
-          base: "" # Disables general account activity blocks to save space
+          base: "" 
           
-          # ENABLE GRANULAR TRAFFIC ANALYSIS
-          plugin_traffic: yes
+          # ✒️ JEKYLL RSS BLOG CONFIGURATION
+          plugin_posts: yes
+          plugin_posts_source: rss
+          plugin_posts_user: https://github.io
+          plugin_posts_limit: 4
