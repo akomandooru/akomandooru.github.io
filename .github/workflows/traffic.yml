@@ -23,7 +23,7 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.TRAFFIC_TOKEN }}
-          committer_token: ${{ secrets.TRAFFIC_TOKEN }}
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
           
           # 📑 TARGET DESTINATION LOCATION
           filename: github-metrics.svg
