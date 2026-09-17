@@ -2,8 +2,8 @@ name: Nightly Traffic Analytics Backup
 
 on:
   schedule:
-    - cron: '17 3 * * *' # Runs at 3:17 AM UTC
-  workflow_dispatch: # Allows manual testing
+    - cron: '17 3 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -23,17 +23,18 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.TRAFFIC_TOKEN }}
-          
-          # 💾 Commits the generated SVG image directly back to your branch
           committer_token: ${{ secrets.TRAFFIC_TOKEN }}
           
+          # 📑 TARGET DESTINATION LOCATION
           filename: github-metrics.svg
+          committer_branch: main
+          
+          # 👤 PROFILE IDENTITY DEFINITION
           user: akomandooru
           template: classic
-          base: "" 
+          base: ""
           
-          # ✒️ CORRECT TARGETING FOR JEKYLL XML STRUCTURE
+          # ✒️ COMPACT RSS ENGINE STRINGS
           plugin_rss: yes
-          plugin_rss_source: |
-            https://github.io
+          plugin_rss_source: https://github.io
           plugin_rss_limit: 4
