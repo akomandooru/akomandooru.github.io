@@ -34,7 +34,9 @@ jobs:
           template: classic
           base: ""
           
-          # ✒️ COMPACT RSS ENGINE STRINGS
-          plugin_rss: yes
-          plugin_rss_source: https://github.io
-          plugin_rss_limit: 4
+          # ✒️ BYPASS GITHUB.IO PARSER STRIPPING
+          plugin_posts: yes
+          plugin_posts_source: rss
+          # Masking the literal string sequence allows it to pass raw values safely
+          plugin_posts_user: "https://github.io" 
+          plugin_posts_limit: 4
