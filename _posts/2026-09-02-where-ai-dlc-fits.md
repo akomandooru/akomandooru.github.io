@@ -7,7 +7,7 @@ title: "AI-DLC Fits the Team Altitude. Cross-Team Arbitration Is a Different Pro
 
 **A three-altitude map showing what Agile/Scrum/SAFe already solve, what AI changes, and where AI-DLC actually sits.**
 
-![Three Altitude Hero](../assets/ThreeAltitudeHero.png)
+![Three Altitude Hero]({{ '/assets/ThreeAltitudeHero.png' | relative_url }})
 
 ---
 
